@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "your-fastapi-service"
+version = "0.1.0"
+description = "FastAPI service with transformers"
+authors = ["Sahil Kariyania <sahil.kariyania@gmail.com>"]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+fastapi = "^0.70.0"
+uvicorn = "^0.15.0"
+torch = "2.1.0"
+transformers = {extras = ["torch"], version = "^4.37.2"}
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.4"
