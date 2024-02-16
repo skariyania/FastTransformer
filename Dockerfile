@@ -21,13 +21,14 @@ COPY pyproject.toml /app/
 
 # Install dependencies with Poetry
 RUN poetry config virtualenvs.create false \
+    && poetry lock --no-update \
     && poetry install --no-dev --no-interaction --no-ansi
 
 # Install additional dependencies for production
 RUN pip install fastapi uvicorn
 
 # Copy the application code
-COPY main.py /app/main.py
+COPY app/main.py /app/app/main.py
 
 # Expose the port the app runs on
 EXPOSE 8000

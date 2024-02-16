@@ -1,9 +1,21 @@
 from fastapi import FastAPI, HTTPException, Depends
+from fastapi.middleware.cors import CORSMiddleware
 from transformers import pipeline
 from typing import List
 import os
 
 app = FastAPI()
+
+# Allow all origins, replace "*" with your specific front-end origin
+# not recommended to have * in production systems
+origins = ["*"]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],  # Allow all methods (GET, POST, etc.)
+    allow_headers=["*"],  # Allow all headers
+)
 
 # Load model name from environment variable
 MODEL_NAME = os.getenv("MODEL_NAME", "distilbert-base-uncased")
