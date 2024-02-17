@@ -25,7 +25,7 @@ def get_sentiment_pipeline():
     """ Dependency to get the sentiment pipeline """
     return sentiment_pipeline
 
-@app.post("/analyze-sentiments/", response_model=List[dict])
+@app.post("/analyze-sentiments", response_model=List[dict])
 async def analyze_sentiments(data: List[str], sentiment_pipeline=Depends(get_sentiment_pipeline)):
     """ Route to analyze sentiments """
     try:
